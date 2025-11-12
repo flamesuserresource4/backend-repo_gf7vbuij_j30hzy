@@ -38,6 +38,16 @@ class Product(BaseModel):
     category: str = Field(..., description="Product category")
     in_stock: bool = Field(True, description="Whether product is in stock")
 
+# Leaderboard schema for the matching tiles game
+class Leaderboard(BaseModel):
+    """
+    Leaderboard entries for the tile matching game
+    Collection name: "leaderboard"
+    """
+    name: str = Field(..., min_length=1, max_length=40, description="Player name")
+    time_ms: int = Field(..., ge=0, description="Completion time in milliseconds")
+    moves: int = Field(..., ge=0, description="Number of moves taken")
+
 # Add your own schemas here:
 # --------------------------------------------------
 
